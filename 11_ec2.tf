@@ -28,7 +28,7 @@ resource "aws_instance" "jisoo_weba" {
                   #!/bin/bash
                   sudo su -
                   yum install -y httpd
-                  echo "jisoo-Terraform-1 >> /var/www/html/index.html
+                  echo "jisoo-Terraform-1" >> /var/www/html/index.html
                   systemctl start httpd
                   EOF
 }
