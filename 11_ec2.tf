@@ -42,3 +42,7 @@ resource "aws_eip" "jisoo_weba_ip" {
     ]
 
 }
+
+output "public_ip" {
+    value = aws_instance.jisoo_weba.public_ip
+}
