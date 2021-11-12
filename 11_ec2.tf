@@ -17,20 +17,14 @@ data "aws_ami" "amzn" {
 */
 
 resource "aws_instance" "jisoo_weba" {
-    ami = "ami-04e8dfc09b22389ad"
+    ami = "ami-04e8dfc09b22389ad"   #data.aws_ami.amzn.id
     instance_type = "t2.micro"
     key_name = "jisoo2-key"
     availability_zone = "ap-northeast-2a"
     private_ip = "10.0.0.11"
     subnet_id = aws_subnet.jisoo_puba.id    #public_subnet a의 ID
-    vpc_security_group_ids = [aws_security_group.jisoo_sg.id]
-    user_data = <<-EOF
-                  #!/bin/bash
-                  sudo su -
-                  yum install -y httpd
-                  echo "jisoo-Terraform-1" >> /var/www/html/index.html
-                  systemctl start httpd
-                  EOF
+    vpc_security_group_ids = [aws_security_group.jisoo_sg.id] 
+    user_data = file("./install.sh")
 }
 
 resource "aws_eip" "jisoo_weba_ip" {
