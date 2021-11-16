@@ -5,4 +5,8 @@ resource "aws_ami_from_instance" "jisoo_ami" {
     depends_on = [
         aws_instance.jisoo_weba
     ]
+
+    tags = {
+        "Name" = "jisoo-ami"
+    }
 }
