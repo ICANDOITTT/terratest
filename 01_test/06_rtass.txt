@@ -1,0 +1,9 @@
+resource "aws_route_table_association" "jisoo_rtass_a" {
+    subnet_id = aws_subnet.jisoo_puba.id
+    route_table_id = aws_route_table.jisoo_rf.id
+}
+
+resource "aws_route_table_association" "jisoo_rtass_c" {
+    subnet_id = aws_subnet.jisoo_pubc.id
+    route_table_id = aws_route_table.jisoo_rf.id
+}

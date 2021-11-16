@@ -1,0 +1,12 @@
+resource "aws_lb" "jisoo_alb" {
+    name = "jisoo-alb"
+    internal = false
+    load_balancer_type = "application"
+    security_groups = [aws_security_group.jisoo_sg.id]
+    subnets = [aws_subnet.jisoo_puba.id,aws_subnet.jisoo_pubc.id] # loadbalancer가 사용할 public zone
+
+    tags = {
+        "Name" = "jisoo-alb"
+    }
+
+}
